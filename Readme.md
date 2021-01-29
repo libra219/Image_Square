@@ -6,7 +6,7 @@ Make the image as ratio square.
 
 ## Demo
 
-![demo](.\demo.gif)
+![demo](./demo.gif)
 
 ## Usage
 
