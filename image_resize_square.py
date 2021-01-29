@@ -11,11 +11,12 @@ TODO:
 '''
 import datetime
 import sys
+import time
+
 from PIL import Image
 
 # ドラッグアンドドロップでファイル読み取り
-file_paths = sys.argv[1]
-im = Image.open(file_paths).convert('RGB')
+file_paths = sys.argv[1:]
 
 def imagesquare(pil_img, background_color):
     ''' Check image size
@@ -36,8 +37,11 @@ def imagesquare(pil_img, background_color):
         result.paste(pil_img, ((height - width) // 2, 0))
         return result
 
-# 現在時刻の取得
-dt_now = datetime.datetime.now()
-nowtime = dt_now.strftime('%Y_%m_%d_%H_%M_%S')
-im_new = imagesquare(im, (0, 0, 0))
-im_new.save(nowtime + '_square.jpg', quality=95)
+for file_path in file_paths:
+    # 現在時刻の取得(ファイル名になる)
+    dt_now = datetime.datetime.now()
+    nowtime = dt_now.strftime('%Y_%m_%d_%H_%M_%S')
+
+    im = Image.open(file_path).convert('RGB')
+    im_new = imagesquare(im, (0, 0, 0))
+    im_new.save(nowtime + '_square.jpg', quality=95)
