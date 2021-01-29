@@ -11,7 +11,6 @@ TODO:
 '''
 import datetime
 import sys
-import time
 
 from PIL import Image
 
